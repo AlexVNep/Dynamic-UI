@@ -7,9 +7,19 @@ function toggleDropDown() {
 }
 
 //Listens for the click to execute the toggleDropDown function
-menuButton.addEventListener("click", function (e) {
-  e.stopPropagation();
-  toggleDropDown();
-});
+function menuButtonHandler() {
+  menuButton.addEventListener("click", function (e) {
+    e.stopPropagation();
+    toggleDropDown();
+  });
+}
 
-export { toggleDropDown };
+function closeMenuHandler() {
+  document.documentElement.addEventListener("click", function () {
+    if (dropDownMenu.classList.contains("show")) {
+      toggleDropDown();
+    }
+  });
+}
+
+export { toggleDropDown, menuButtonHandler, closeMenuHandler };
