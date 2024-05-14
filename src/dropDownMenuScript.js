@@ -8,18 +8,32 @@ function toggleDropDown() {
 
 //Listens for the click to execute the toggleDropDown function
 function menuButtonHandler() {
-  menuButton.addEventListener("click", function (e) {
+  attachEventListenerOpen(menuButton);
+}
+
+function attachEventListenerOpen(element) {
+  element.addEventListener("click", function (e) {
     e.stopPropagation();
     toggleDropDown();
   });
 }
 
 function closeMenuHandler() {
+  attachEventListenerClose(dropDownMenu);
+}
+
+function attachEventListenerClose(element) {
   document.documentElement.addEventListener("click", function () {
-    if (dropDownMenu.classList.contains("show")) {
+    if (element.classList.contains("show")) {
       toggleDropDown();
     }
   });
 }
 
-export { toggleDropDown, menuButtonHandler, closeMenuHandler };
+export {
+  toggleDropDown,
+  menuButtonHandler,
+  closeMenuHandler,
+  attachEventListenerOpen,
+  attachEventListenerClose,
+};
